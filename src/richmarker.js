@@ -1,6 +1,6 @@
 // ==ClosureCompiler==
 // @compilation_level ADVANCED_OPTIMIZATIONS
-// @externs_url http://closure-compiler.googlecode.com/svn/trunk/contrib/externs/maps/google_maps_api_v3.js
+// @externs_url https://raw.githubusercontent.com/google/closure-compiler/master/contrib/externs/maps/google_maps_api_v3.js
 // @output_wrapper (function() {%output%})();
 // ==/ClosureCompiler==
 
@@ -42,6 +42,8 @@ function RichMarker(opt_options) {
    * @private
    */
   this.dragging_ = false;
+
+  this.propagateClicks = !!options['propagateClicks'];
 
   if (opt_options['visible'] == undefined) {
     opt_options['visible'] = true;
@@ -729,6 +731,13 @@ RichMarker.prototype.onAdd = function() {
 
     var that = this;
     google.maps.event.addDomListener(this.markerContent_, 'click', function(e) {
+      if(!that.propagateClicks){
+        if(e.stopPropagation) {
+            e.stopPropagation();
+        } else {
+            e.returnValue = false;
+        } 
+      }
       google.maps.event.trigger(that, 'click');
     });
     google.maps.event.addDomListener(this.markerContent_, 'mouseover', function(e) {

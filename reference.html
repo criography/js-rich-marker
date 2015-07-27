@@ -114,6 +114,32 @@
           </tbody>
         </table>
 
+        <h3>Custom Options</h3>
+        <table summary="class RichMarker - Options" width="90%">
+          <thead>
+            <tr>
+              <th>Option</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>propagateClicks</code></td>
+              <td><code>{bool}</code></td>
+              <td><code>false</code></td>
+              <td>Declares whether clicking on a marker should propagate down to the map canvas</td>
+            </tr>            
+            <tr>
+              <td><code>content</code></td>
+              <td><code>{string}</code></td>
+              <td><code>''</code></td>
+              <td>string (HTML) contajning marker code</td>
+            </tr>
+          </tbody>
+        </table>
+
         <h3>Methods</h3>
         <table summary="class RichMarker - Methods" width="90%">
           <thead>
@@ -331,7 +357,7 @@
               <td><code>ready</code></td>
               <td><code>None</code></td>
               <td>This event is fired when the marker is ready to interact with.</td>
-            </tr>
+            </tr>            
              <tr>
               <td><code>visible_changed</code></td>
               <td><code>None</code></td>
